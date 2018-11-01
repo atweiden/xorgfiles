@@ -1,0 +1,96 @@
+/* vim: set ft=journal fdm=marker fdl=0 nowrap: */
+
+Installation
+============
+
+Install Software
+----------------
+
+```sh
+# xorg
+xbps-install xautolock \
+             xdg-utils \
+             xdotool \
+             xf86-video-fbdev \
+             xmodmap \
+             xorg \
+             xterm
+
+# audio
+xbps-install alsa-firmware \
+             alsa-utils \
+             pulseaudio
+
+# terminal emulators
+xbps-install lxterminal \
+             rxvt-unicode \
+             urxvt-perls \
+             xfce4-terminal
+
+# desktop
+xbps-install adwaita-icon-theme \
+             gnome-icon-theme \
+             gnome-icon-theme-extras \
+             gnome-menus \
+             gnome-themes-standard \
+             gtk-engine-equinox \
+             gtk-engine-murrine \
+             i3lock \
+             lxappearance-obconf \
+             lxinput \
+             lxrandr \
+             obmenu-generator \
+             openbox
+
+# graphics (nvidia)
+git clone https://gist.github.com/atweiden/701d14375996cf4823d369ef51169580
+
+# desktop apps
+xbps-install cbatticon-gtk3 \
+             chromium \
+             compton \
+             conky \
+             dmenu \
+             evince \
+             feh \
+             firefox \
+             galculator-gtk3 \
+             gmrun \
+             gnumeric \
+             gvim-huge \
+             keepassxc \
+             leafpad \
+             nitrogen \
+             pcmanfm \
+             redshift \
+             tint2 \
+             vlc \
+             volumeicon \
+             wmctrl \
+             xsel
+
+# fonts
+xbps-install font-firacode \
+             font-iosevka \
+             google-fonts-ttf
+```
+
+
+Get Monaco
+----------
+
+On macOS:
+
+```sh
+brew install fondu
+cp /System/Library/Fonts/Monaco.dfont .
+fondu Monaco.dfont
+```
+
+on Void:
+
+```sh
+mkdir -p "$HOME/.local/share/fonts"
+mv Monaco.ttf "$HOME/.local/share/fonts"
+fc-cache -vf
+```

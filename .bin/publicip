@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# ----------------------------------------------------------------------------
+# publicip: show public IP address
+# ----------------------------------------------------------------------------
+
+set -o pipefail
+
+main() {
+  drill -V 3 myip.opendns.com @resolver1.opendns.com 2>/dev/null \
+    | grep IN \
+    | tail -n 1 \
+    | cut -f5 -s
+}
+
+main
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

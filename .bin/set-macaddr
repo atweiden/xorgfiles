@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# ----------------------------------------------------------------------------
+# set-macaddr: set MAC address on interface
+# ----------------------------------------------------------------------------
+
+_usage() {
+read -r -d '' _usage_string <<'EOF'
+Usage:
+  set-macaddr [-h|--help] <interface> <macaddr>
+  set-macaddr wlan0 d4:9a:20:11:44:26
+
+Options:
+  -h, --help  Show this help text
+EOF
+echo "$_usage_string"
+}
+
+_POSITIONAL=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      _usage
+      exit 0
+      ;;
+    *)
+      _POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+
+_interface="${_POSITIONAL[0]}"
+_macaddr="${_POSITIONAL[1]}"
+
+# restore positional params
+set -- "${_POSITIONAL[@]}"
+
+if ! [[ -n "$_macaddr" && -n "$_interface" ]]; then
+  _usage
+  exit 1
+fi
+
+main() {
+  if ! [[ "$UID" == '0' ]]; then
+    echo 'Sorry, requires root privileges'
+    exit 1
+  fi
+  ip link set "$1" down
+  ip link set dev "$1" address "$2"
+  ip link set "$1" up
+}
+
+main "$_interface" "$_macaddr"
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

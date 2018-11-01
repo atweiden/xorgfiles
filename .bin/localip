@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# ----------------------------------------------------------------------------
+# localip: show local IP address
+# ----------------------------------------------------------------------------
+
+set -o pipefail
+
+main() {
+  ip -o -4 route show to default 2>/dev/null \
+    | tr '[:space:]' '\n' \
+    | sed -n '/src/{n;p}'
+}
+
+main
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

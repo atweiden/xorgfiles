@@ -1,0 +1,76 @@
+[user]
+  name = "yourname"
+  email = youremail
+
+[github]
+  user = yourgithubacct
+
+[core]
+  editor = vim
+  attributesfile = "~/.config/git/attributes"
+  excludesfile = "~/.config/git/ignore"
+
+[gpg]
+  program = gpg2
+
+[alias]
+  br = branch
+  ci = commit
+  co = checkout
+  logv = log -v --pretty
+  ls = ls-files
+  p = format-patch HEAD^..HEAD --stdout
+  st = status --short --branch
+  fixup = "!f() { TARGET=$(git rev-parse $1); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+  merc = merge --no-ff
+  please = push --force-with-lease
+  squash = "!f() { git rebase -i HEAD~$1; }; f"
+  stsh = stash --keep-index
+  staash = stash --include-untracked
+  staaash = stash --all
+  touch = "!f() { git commit --amend --no-edit && git push -f; }; f"
+
+[mergetool]
+  keepBackup = true
+
+[difftool]
+  prompt = false
+
+[diff]
+  tool = vimdiff
+  algorithm = minimal
+  compactionHeuristic = true
+
+[diff "exif"]
+  textconv = exiftool
+
+[rerere]
+  enabled = 1
+
+[format]
+  pretty = oneline
+
+[color]
+  ui = true
+
+[color "diff"]
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[push]
+  default = simple
+
+# check that anything we're getting is complete/sane on a regular basis
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckObjects = true
