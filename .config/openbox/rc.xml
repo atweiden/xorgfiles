@@ -310,7 +310,7 @@
     </keybind>
     <keybind key="W-g">
       <action name="Execute">
-        <command>gvim</command>
+        <command>gvim-huge</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>gvim</name>
