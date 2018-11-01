@@ -104,45 +104,61 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 # --- display {{{
 
-# miromiro dircolors by jwr
-[[ -f "$HOME/.config/dircolors" ]] \
-  && eval $(dircolors -b "$HOME/.config/dircolors")
+if [[ "x$DISPLAY" != 'x' ]]; then
+  export HAS_256_COLORS='yes'
+  alias tmux='tmux -2'
+  if [[ "$TERM" == 'xterm' ]]; then
+    export TERM='xterm-256color'
+  fi
+else
+  if [[ "$TERM" == 'xterm' || "$TERM" =~ '256color' ]]; then
+    export HAS_256_COLORS='yes'
+    alias tmux='tmux -2'
+  fi
+fi
+if [[ "$TERM" == 'screen' && "$HAS_256_COLORS" == 'yes' ]]; then
+  export TERM='screen-256color'
+elif [[ "$TERM" == 'tmux' && "$HAS_256_COLORS" == 'yes' ]]; then
+  export TERM='tmux-256color'
+fi
 
 # miro8 console colors by jwr
-# black
-echo -en "\e]P0000000"
-# darkgrey
-echo -en "\e]P83d3d3d"
-# darkred
-echo -en "\e]P18c4665"
-# red
-echo -en "\e]P9bf4d80"
-# darkgreen
-echo -en "\e]P2287373"
-# green
-echo -en "\e]PA53a6a6"
-# brown
-echo -en "\e]P37c7c99"
-# yellow
-echo -en "\e]PB9e9ecb"
-# darkblue
-echo -en "\e]P4395573"
-# blue
-echo -en "\e]PC477ab3"
-# darkmagenta
-echo -en "\e]P55e468c"
-# magenta
-echo -en "\e]PD7e62b3"
-# darkcyan
-echo -en "\e]P631658c"
-# cyan
-echo -en "\e]PE6096bf"
-# lightgrey
-echo -en "\e]P7899ca1"
-# white
-echo -en "\e]PFc0c0c0"
-# bring us back to default input colours
-clear
+if [[ "$TERM" == "linux" || "$TERM" == "vt100" || "$TERM" == "vt220" ]]; then
+   # black
+   echo -en "\e]P0000000"
+   # darkgrey
+   echo -en "\e]P83d3d3d"
+   # darkred
+   echo -en "\e]P18c4665"
+   # red
+   echo -en "\e]P9bf4d80"
+   # darkgreen
+   echo -en "\e]P2287373"
+   # green
+   echo -en "\e]PA53a6a6"
+   # brown
+   echo -en "\e]P37c7c99"
+   # yellow
+   echo -en "\e]PB9e9ecb"
+   # darkblue
+   echo -en "\e]P4395573"
+   # blue
+   echo -en "\e]PC477ab3"
+   # darkmagenta
+   echo -en "\e]P55e468c"
+   # magenta
+   echo -en "\e]PD7e62b3"
+   # darkcyan
+   echo -en "\e]P631658c"
+   # cyan
+   echo -en "\e]PE6096bf"
+   # lightgrey
+   echo -en "\e]P7899ca1"
+   # white
+   echo -en "\e]PFc0c0c0"
+   # bring us back to default input colours
+   clear
+fi
 
 # --- end display }}}
 # --- remove ctrl-s ctrl-q {{{
