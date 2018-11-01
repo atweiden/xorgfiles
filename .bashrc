@@ -537,8 +537,8 @@ alias dt-zurich='_t=$(TZ=Europe/Zurich dt)            ; echo "[$_t] Zürich"'
 # --- vim {{{
 
 alias :e='"$EDITOR"'
-# tell vim not to attempt connection with X server
-[[ -n "$_has_vim" ]] \
+# if not in X, tell vim not to attempt connection w/ X server
+[[ -z "$DISPLAY" ]] \
   && alias vim='vim -X'
 [[ -n "$_has_vim" ]] \
   && alias view='vim -R'
@@ -551,10 +551,19 @@ alias :e='"$EDITOR"'
     -u NONE \
     -U NONE \
     --cmd "set nocompatible | syntax on | filetype plugin indent on"'
-[[ -n "$_has_vim" ]] \
-  && alias rvim='rvim -X'
-[[ -n "$_has_vim" ]] \
-  && alias rview='rview -X'
+[[ -n "$_has_gvim" ]] \
+  && alias gvim='gvim-huge'
+[[ -n "$_has_gvim" ]] \
+  && alias gview='gvim -R'
+[[ -n "$_has_gvim" ]] \
+  && alias gvime='gvim -u $HOME/.vim/vimrc.encrypt -x'
+[[ -n "$_has_gvim" ]] \
+  && alias gviml='gvim -u $HOME/.vim/vimrc.lite'
+[[ -n "$_has_gvim" ]] \
+  && alias gvimmin='gvim \
+    -u NONE \
+    -U NONE \
+    --cmd "set nocompatible | syntax on | filetype plugin indent on"'
 [[ -n "$_has_nvim" ]] \
   && alias nv='nvim'
 [[ -n "$_has_nvim" ]] \
@@ -682,8 +691,8 @@ export FZF_DEFAULT_OPTS='
 export FZF_CTRL_R_OPTS="--preview 'echo {}' \
   --preview-window down:3:hidden \
   --bind ?:toggle-preview"
-[[ -x "$HOME/.vim/pack/search-replace/start/fzf.vim/bin/preview.sh" ]] \
-  && export FZF_CTRL_T_OPTS="--preview '$HOME/.vim/pack/search-replace/start/fzf.vim/bin/preview.sh {} \
+[[ -x "$HOME/.vim/plugged/fzf.vim/bin/preview.sh" ]] \
+  && export FZF_CTRL_T_OPTS="--preview '$HOME/.vim/plugged/fzf.vim/bin/preview.sh {} \
     | head -200'"
 
 # source fzf completions

@@ -4,8 +4,8 @@ startup_message off
 # use user-defined shell
 shell "$SHELL"
 
-# set default TERM to screen
-term screen
+# set default TERM to screen-256color
+term screen-256color
 
 # do not attempt Xserver connection
 unsetenv DISPLAY
@@ -54,6 +54,9 @@ defbce on
 # allow bold colors
 attrcolor b ".I"
 attrcolor i "+b"
+
+# allow 256 colors
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 # remove keybindings by binding them to nothing
 bind h

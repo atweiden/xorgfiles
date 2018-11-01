@@ -145,11 +145,14 @@ rsync --verbose "${_rsync_opts[@]}" "$DIR/" "$HOME"
 
 
 # -----------------------------------------------------------------------------
-# vim
+# vim-plug
 # -----------------------------------------------------------------------------
 
-# clone plugins for vim 8 package management
-"$HOME/.vim/pack/install.sh"
+_plug_url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if ! [[ -e "$HOME/.vim/autoload/plug.vim" ]]; then
+  curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs "$_plug_url"
+  vim +PlugInstall +qa
+fi
 
 
 # -----------------------------------------------------------------------------

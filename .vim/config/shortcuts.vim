@@ -3,7 +3,6 @@
 " --- selecting {{{
 
 " bind escape key
-packadd vim-arpeggio
 call arpeggio#load()
 Arpeggio noremap jk <ESC>
 Arpeggio inoremap jk <ESC>

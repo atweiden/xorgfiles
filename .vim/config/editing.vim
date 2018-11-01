@@ -21,8 +21,8 @@ set report=0
 " don't highlight the screen line or column
 set nocursorline nocursorcolumn
 
-" never show statusline
-set laststatus=0
+" always show statusline
+set laststatus=2
 
 " don't highlight matching parens
 set noshowmatch
@@ -74,7 +74,7 @@ set linebreak
 set whichwrap+=<,>,[,]
 
 " indicate wrapped characters
-set showbreak=ø
+set showbreak=⁍
 
 " copy indent from current line when starting a new line
 set autoindent

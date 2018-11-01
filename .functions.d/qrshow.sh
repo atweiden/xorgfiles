@@ -5,6 +5,6 @@
 # https://news.ycombinator.com/item?id=5332843
 # -----------------------------------------------------------------------------
 
-qrshow() { qrencode -t ASCII -s 10 "$1" -o -; }
+qrshow() { qrencode -s 10 "$1" -o - | display - ; }
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:

@@ -51,8 +51,11 @@ vnoremap <C-Q> <ESC>:qall<CR>
 " hide intro screen, use all abbreviations, omit redundant messages
 set shortmess=aIoO
 
-" turn off mouse
-set mouse=
+" turn on mouse in all modes
+if has('mouse')
+  set mouse=a
+  set mousemodel=popup_setpos
+endif
 
 " use utf-8 without BOM
 set encoding=utf-8
@@ -66,8 +69,8 @@ set nofsync
 " prefer blowfish2 encryption method
 silent! set cryptmethod=blowfish2
 
-" show active mode on last line
-set showmode
+" don't show active mode on last line, lightline has this covered
+set noshowmode
 
 " greatly restrict local .vimrc and .exrc files
 set secure
@@ -123,5 +126,6 @@ set lazyredraw
 
 " indicates fast terminal connection
 set ttyfast
+if !has('nvim') | set ttymouse=xterm2 | endif
 
 " vim: set filetype=vim foldmethod=marker foldlevel=0 nowrap:
