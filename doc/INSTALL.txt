@@ -32,6 +32,7 @@ xbps-install adwaita-icon-theme \
              gnome-icon-theme \
              gnome-icon-theme-extras \
              gnome-menus \
+             gnome-themes-extra \
              gnome-themes-standard \
              gtk-engine-equinox \
              gtk-engine-murrine \
