@@ -620,7 +620,7 @@ done
 
 if [[ -x "$HOME/.bin/voidinfo" && -z "$VIMRUNTIME" ]]; then
   if ! [[ "$UID" == '0' ]]; then
-    voidinfo
+    voidinfo -c green
   else
     voidinfo -c red
   fi
