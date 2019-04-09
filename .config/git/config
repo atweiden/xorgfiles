@@ -13,6 +13,9 @@
 [gpg]
   program = gpg2
 
+[sendemail]
+  annotate = yes
+
 [alias]
   br = branch
   ci = commit
