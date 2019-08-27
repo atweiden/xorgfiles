@@ -95,11 +95,6 @@ Plug 'vim-jp/vim-cpp',                   { 'for': [ 'c', 'cpp' ] }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': [ 'c', 'cpp' ] }
 
 " --- end c/c++ }}}
-" --- dart {{{
-
-Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
-
-" --- end dart }}}
 " --- elixir {{{
 
 Plug 'elixir-editors/vim-elixir', { 'for': [ 'eelixir', 'elixir' ] }
