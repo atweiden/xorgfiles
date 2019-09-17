@@ -1,0 +1,17 @@
+/* vim: set filetype=finn foldmethod=marker foldlevel=0 nowrap: */
+
+Usage
+=====
+
+Start Xorg as non-root user [1]:
+
+```sh
+tty
+# tty1
+startx -- vt1
+```
+
+
+******************************************************************************
+
+[1]: https://wiki.gentoo.org/wiki/Non_root_Xorg
