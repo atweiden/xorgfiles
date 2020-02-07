@@ -190,13 +190,14 @@ PATH='/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin'
 PATH="$HOME/.bin:$PATH"
 
 # --- end dotfiles }}}
-# --- perl6 {{{
+# --- raku {{{
 
-PATH="$HOME/.perl6/bin:$PATH"
-PATH="/usr/share/perl6/site/bin:$PATH"
-PATH="/usr/share/perl6/vendor/bin:$PATH"
+PATH="$HOME/.raku/bin:$PATH"
+PATH="/usr/lib/raku/core/bin:$PATH"
+PATH="/usr/lib/raku/site/bin:$PATH"
+PATH="/usr/lib/raku/vendor/bin:$PATH"
 
-# --- end perl6 }}}
+# --- end raku }}}
 
 export PATH
 
@@ -221,8 +222,8 @@ _has_mosh="$(command -v mosh)"
 _has_ncdu="$(command -v ncdu)"
 _has_nvim="$(command -v nvim)"
 _has_pcmanfm="$(command -v pcmanfm)"
-_has_perl6="$(command -v perl6)"
 _has_pt="$(command -v pt)"
+_has_raku="$(command -v raku)"
 _has_rclone="$(command -v rclone)"
 _has_rg="$(command -v rg)"
 _has_rlwrap="$(command -v rlwrap)"
@@ -395,16 +396,16 @@ export INTERFACE="$(interface)"
   && alias iex='rlwrap --always-readline --ansi-colour-aware iex'
 
 # --- --- end beam }}}
-# --- --- perl6 {{{
+# --- --- raku {{{
 
-[[ -n "$_has_perl6" ]] \
-  && alias p6='perl6'
-[[ -n "$_has_perl6" ]] \
-  && alias prove6='prove -r -e perl6'
-[[ -n "$_has_perl6" && -n "$_has_rlwrap" ]] \
-  && alias rp='rlwrap perl6'
+[[ -n "$_has_raku" ]] \
+  && alias p6='raku'
+[[ -n "$_has_raku" ]] \
+  && alias prove6='prove -r -e raku'
+[[ -n "$_has_raku" && -n "$_has_rlwrap" ]] \
+  && alias rp='rlwrap raku'
 
-# --- --- end perl6 }}}
+# --- --- end raku }}}
 
 # --- end languages }}}
 # --- path {{{
