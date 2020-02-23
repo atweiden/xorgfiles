@@ -3,7 +3,7 @@
 Usage
 =====
 
-Start Xorg as non-root user [1]:
+start xorg as non-root user [1]:
 
 ```sh
 tty
@@ -11,6 +11,18 @@ tty
 startx -- vt1
 ```
 
+verify void linux iso
+
+```sh
+xbps-install outils \
+             void-release-keys
+
+signify \
+  -C \
+  -p /etc/signify/void-release-20191109.pub \
+  -x /path/to/sha256.sig \
+  /path/to/void-live-x86_64-musl-20191109.iso
+```
 
 ******************************************************************************
 
