@@ -826,6 +826,12 @@ export PGSERVICEFILE="$HOME/.config/pg/pg_service.conf"
 
 # end pg }}}
 # ==============================================================================
+# wget {{{
+
+export WGETRC="$HOME/.config/wget/wgetrc"
+
+# end wget }}}
+# ==============================================================================
 # xtools {{{
 
 export XLOCATE_GIT="$HOME/.config/xtools/xlocate.git"
