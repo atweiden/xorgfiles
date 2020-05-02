@@ -300,17 +300,6 @@ elif [[ -n "$_has_colordiff" ]]; then
   alias diff='colordiff'
 fi
 
-if [[ -n "$_has_diffr" ]]; then
-  # from junegunn/seoul256.vim rgb_map: 65 => #5f875f
-  DIFFR+=' --colors refine-added:none:background:95,135,95'
-  # from junegunn/seoul256.vim rgb_map: 131 => #af5f5f
-  DIFFR+=' --colors refine-removed:none:background:175,95,95'
-  # use seoul256 colors
-  alias diffr="diffr $DIFFR"
-  # for git config and diffrous
-  export DIFFR
-fi
-
 # --- end diff }}}
 # --- directory navigation {{{
 
@@ -402,11 +391,6 @@ alias incognito=' unset HISTFILE'
 alias info='info --vi-keys'
 
 # --- end info }}}
-# --- ip {{{
-
-export INTERFACE="$(interface)"
-
-# --- end ip }}}
 # --- irssi {{{
 
 [[ -n "$_has_irssi" ]] \
@@ -666,7 +650,7 @@ done
 
 # end completions }}}
 # ==============================================================================
-# voidinfo {{{
+# system {{{
 
 if [[ -x "$HOME/.bin/voidinfo" && -z "$VIMRUNTIME" ]]; then
   if ! [[ "$UID" == '0' ]]; then
@@ -676,37 +660,36 @@ if [[ -x "$HOME/.bin/voidinfo" && -z "$VIMRUNTIME" ]]; then
   fi
 fi
 
-# end voidinfo }}}
+# end system }}}
 # ==============================================================================
-# gtk {{{
+# software {{{
 
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
-
-# end gtk }}}
-# ==============================================================================
-# rlwrap {{{
-
-export RLWRAP_HOME="$HOME/.config/rlwrap"
-
-# %L,%C = line, column number of cursor position in rlwrap's edit buffer
-export RLWRAP_EDITOR="vim '+call cursor(%L,%C)'"
-
-# end rlwrap }}}
-# ==============================================================================
-# raku {{{
-
-export RAKUDO_HOME='/usr/lib/raku'
-
-# end raku }}}
-# ==============================================================================
-# beam {{{
+# --- beam {{{
 
 # enable repl history
 export ERL_AFLAGS='-kernel shell_history enabled'
 
-# end beam }}}
-# ==============================================================================
-# fzf {{{
+# --- end beam }}}
+# --- cryfs {{{
+
+export CRYFS_NO_UPDATE_CHECK=true
+
+# --- end cryfs }}}
+# --- diffr {{{
+
+if [[ -n "$_has_diffr" ]]; then
+  # from junegunn/seoul256.vim rgb_map: 65 => #5f875f
+  DIFFR+=' --colors refine-added:none:background:95,135,95'
+  # from junegunn/seoul256.vim rgb_map: 131 => #af5f5f
+  DIFFR+=' --colors refine-removed:none:background:175,95,95'
+  # use seoul256 colors
+  alias diffr="diffr $DIFFR"
+  # for git config and diffrous
+  export DIFFR
+fi
+
+# --- end diffr }}}
+# --- fzf {{{
 
 # use rg/ag/pt/ack as the default source for fzf
 if [[ -n "$_has_rg" ]]; then
@@ -788,55 +771,68 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' \
 [[ -r "$HOME/.fzf-extras/fzf-extras.sh" ]] \
   && source "$HOME/.fzf-extras/fzf-extras.sh"
 
-# end fzf }}}
-# ==============================================================================
-# cryfs {{{
+# --- end fzf }}}
+# --- gerbil {{{
 
-export CRYFS_NO_UPDATE_CHECK=true
+export GERBIL_GSC='/usr/bin/gambit-gsc'
+export GERBIL_HOME='/usr/lib/gerbil'
 
-# end cryfs }}}
-# ==============================================================================
-# gpg {{{
+# --- end gerbil }}}
+# --- gpg {{{
 
 # refresh gpg-agent tty
 if ! [[ "$UID" == '0' ]]; then
   gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
 
-# end gpg }}}
-# ==============================================================================
-# screen {{{
+# --- end gpg }}}
+# --- gtk {{{
 
-export SCREENRC="$HOME/.config/screen/screenrc"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc"
 
-# end screen }}}
-# ==============================================================================
-# gerbil {{{
+# --- end gtk }}}
+# --- ip {{{
 
-export GERBIL_GSC='/usr/bin/gambit-gsc'
-export GERBIL_HOME='/usr/lib/gerbil'
+export INTERFACE="$(interface)"
 
-# end gerbil }}}
-# ==============================================================================
-# pg {{{
+# --- end ip }}}
+# --- postgresql {{{
 
 export PSQLRC="$HOME/.config/pg/psqlrc"
 export PGPASSFILE="$HOME/.config/pg/pgpass"
 export PGSERVICEFILE="$HOME/.config/pg/pg_service.conf"
 
-# end pg }}}
-# ==============================================================================
-# wget {{{
+# --- end postgresql }}}
+# --- raku {{{
+
+export RAKUDO_HOME='/usr/lib/raku'
+
+# --- end raku }}}
+# --- rlwrap {{{
+
+export RLWRAP_HOME="$HOME/.config/rlwrap"
+
+# %L,%C = line, column number of cursor position in rlwrap's edit buffer
+export RLWRAP_EDITOR="vim '+call cursor(%L,%C)'"
+
+# --- end rlwrap }}}
+# --- screen {{{
+
+export SCREENRC="$HOME/.config/screen/screenrc"
+
+# --- end screen }}}
+# --- wget {{{
 
 export WGETRC="$HOME/.config/wget/wgetrc"
 
-# end wget }}}
-# ==============================================================================
-# xtools {{{
+# --- end wget }}}
+# --- xtools {{{
 
 export XLOCATE_GIT="$HOME/.config/xtools/xlocate.git"
 
-# end xtools }}}
+# --- end xtools }}}
+
+# end software }}}
 # ==============================================================================
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
