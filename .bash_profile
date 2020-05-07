@@ -15,10 +15,9 @@ if ! [[ -d "$XDG_RUNTIME_DIR" \
   echo -n "[\$XDG_RUNTIME_DIR] " >&2
   ls -l --directory "$XDG_RUNTIME_DIR" >&2
   unset XDG_RUNTIME_DIR
-  readonly XDG_RUNTIME_DIR="$(mktemp --directory "/tmp/$UID-runtime-XXXXXX")"
+  readonly XDG_RUNTIME_DIR="$(mktemp --directory "/tmp/xdg-runtime-dir-$UID-XXXXXX")"
   echo "[\$XDG_RUNTIME_DIR] set \$XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR" >&2
 fi
-
 export XDG_RUNTIME_DIR
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
