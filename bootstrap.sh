@@ -83,12 +83,18 @@ done
 # settings
 # -----------------------------------------------------------------------------
 
-name="${_name:-Andy Weidenbaum}"       # Name    (GitHub)
-email="${_email:-archbaum@gmail.com}"  # Email   (GitHub)
-github="${_github:-atweiden}"          # Account (GitHub)
-irssi="${_irssi:-atweiden}"            # Account (IRC)
-latitude="${_latitude:-45.523062}"     # Latitude  (Redshift)
-longitude="${_longitude:--122.676482}" # Longitude (Redshift)
+# e.g. Andy Weidenbaum (for github)
+name="${_name:-$USER}"
+# e.g. archbaum@gmail.com (for github)
+email="${_email:-$USER@$HOSTNAME}"
+# e.g. atweiden (for github)
+github="${_github:-$USER}"
+# e.g. atweiden (for irc)
+irssi="${_irssi:-$USER}"
+# latitude (for redshift)
+latitude="${_latitude:-45.523062}"
+# longitude (for redshift)
+longitude="${_longitude:--122.676482}"
 
 
 # -----------------------------------------------------------------------------
@@ -161,9 +167,10 @@ fi
 
 sed -i "s#yourname#$name#"         "$HOME/.config/git/config"
 sed -i "s#youremail#$email#"       "$HOME/.config/git/config"
-sed -i "s#yourgithubacct#$github#" "$HOME/.config/git/config"
+sed -i "s#githubusername#$github#" "$HOME/.config/git/config"
 sed -i "s#yourname#$name#"         "$HOME/.config/hg/hgrc"
 sed -i "s#youremail#$email#"       "$HOME/.config/hg/hgrc"
+sed -i "s#githubusername#$github#" "$HOME/.ssh/config"
 
 
 # -----------------------------------------------------------------------------
@@ -185,6 +192,7 @@ sed -i "s#LONGITUDE#$longitude#"   "$HOME/.config/redshift/redshift.conf"
 # permissions
 # -----------------------------------------------------------------------------
 
-chmod 700 "$HOME/.gnupg" "$HOME/.ssh"
+chmod 700 "$HOME/.gnupg"
+chmod 700 "$HOME/.ssh"
 
 # vim: set filetype=sh foldmethod=marker foldlevel=0 nowrap:
