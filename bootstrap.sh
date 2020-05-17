@@ -18,13 +18,13 @@ Options:
   -h, --help
     print this help message
   -n, --name <name>
-    set full name (defaults to "Andy Weidenbaum")
+    set full name (defaults to "$USER")
   -e, --email <email>
-    set email address (defaults to "archbaum@gmail.com")
+    set email address (defaults to "$USER@$HOSTNAME")
   -g, --github <github>
-    set GitHub username (defaults to "atweiden")
+    set GitHub username (defaults to "$USER")
   -i, --irssi <irssi>
-    set irssi username (defaults to "atweiden")
+    set irssi username (defaults to "$USER")
   -a, --latitude <coordinate>
     set latitude (defaults to "45.523062")
   -o, --longitude <coordinate>
