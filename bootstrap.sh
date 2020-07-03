@@ -120,6 +120,7 @@ _rsync_opts=()
 
 # exclude files
 _rsync_opts+=('--exclude=.git'
+              '--exclude=.gitkeep'
               '--exclude=.hg'
               '--exclude=.subgit'
               '--exclude=doc'
