@@ -251,6 +251,12 @@ export PS1
 # ==============================================================================
 # aliases {{{
 
+# --- bash {{{
+
+alias incognito=' unset HISTFILE'
+alias ,='clear'
+
+# --- end bash }}}
 # --- clipboard {{{
 
 alias n='nullclip'
@@ -387,11 +393,6 @@ fi
   && alias locate='locate --ignore-case'
 
 # --- end grepping }}}
-# --- history {{{
-
-alias incognito=' unset HISTFILE'
-
-# --- end history }}}
 # --- info {{{
 
 alias info='info --vi-keys'
@@ -622,11 +623,6 @@ fi
     -detectsleep &'
 
 # --- end xautolock }}}
-# --- xyz {{{
-
-alias ,='clear'
-
-# --- end xyz }}}
 # --- ydl {{{
 
 if [[ -n "$_has_ydl" ]]; then
