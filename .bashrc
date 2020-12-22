@@ -192,6 +192,11 @@ PATH="/usr/lib/raku/site/bin:$PATH"
 PATH="/usr/lib/raku/vendor/bin:$PATH"
 
 # --- end raku }}}
+# --- rust {{{
+
+PATH="$HOME/.cargo/bin:$PATH"
+
+# --- end rust }}}
 
 export PATH
 
